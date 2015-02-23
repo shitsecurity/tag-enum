@@ -1,0 +1,151 @@
+extensions:
+    - !Extension { extension: 'xml' }
+    - !Extension { extension: 'txt' }
+    - !Extension { extension: 'md' }
+    - !Extension { extension: 'mkd' }
+    - !Extension { extension: 'css' }
+    - !Extension { extension: 'html' }
+    - !Extension { extension: 'js' }
+    - !Extension { extension: 'cfg' }
+    - !Extension { extension: 'conf' }
+    - !Extension { extension: 'config' }
+    - !Extension { extension: 'info' }
+    - !Extension { extension: 'json' }
+    - !Extension { extension: 'yml' }
+    - !Extension { extension: 'yaml' }
+    - !Extension { extension: 'png' }
+    - !Extension { extension: 'jpg' }
+    - !Extension { extension: 'gif' }
+    - !Extension { extension: 'jpeg' }
+    - !Extension { extension: 'svg' }
+    - !Extension { extension: 'ico' }
+    - !Extension { extension: 'ini' }
+
+files:
+    - !File { name: 'README' }
+    - !File { name: 'LICENSE' }
+    - !File { name: 'INSTALL' }
+    - !File { name: 'COPYRIGHT' }
+    - !File { name: 'CHANGELOG' }
+    - !File { name: 'UPGRADE' }
+    - !File { name: 'NEWS' }
+    - !File { name: 'MAINTAINERS' }
+    - !File { name: 'HACKING' }
+    - !File { name: 'CONTRIBUTING' }
+    - !File { name: 'CONTRIBUTORS' }
+    - !File { name: 'COPYING' }
+    - !File { name: 'CREDITS' }
+    - !File { name: 'VERSION' }
+    - !File { name: 'HISTORY' }
+    - !File { name: 'TRADEMARK' }
+    - !File { name: 'FAQ' }
+
+repos:
+
+    - !Git {
+        name: 'WordPress',
+        git: 'https://github.com/WordPress/WordPress',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'Drupal',
+        git: 'https://github.com/drupal/drupal',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'ModX-Evolution',
+        git: 'https://github.com/modxcms/evolution',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'ModX-Revolution',
+        git: 'https://github.com/modxcms/revolution',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'OpenCart',
+        git: 'https://github.com/opencart/opencart',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'Joomla',
+        git: 'https://github.com/joomla/joomla-cms',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'TextPattern',
+        git: 'https://github.com/textpattern/textpattern',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'MediaWiki',
+        git: 'https://github.com/wikimedia/mediawiki',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'Moodle',
+        git: 'https://github.com/moodle/moodle',
+        root: '/'
+    }
+    
+    - !Git {
+        name: 'DokuWiki',
+        git: 'https://github.com/splitbrain/dokuwiki',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'Typo3',
+        git: 'https://github.com/TYPO3/TYPO3.CMS',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'Magento',
+        git: 'https://github.com/magento/magento2',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'phpBB',
+        git: 'https://github.com/phpbb/phpbb',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'fluxBB',
+        git: 'https://github.com/fluxbb/fluxbb',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'punBB',
+        git: 'https://github.com/punbb/punbb',
+        root: '/'
+    }
+
+    - !Git {
+        name: 'myBB',
+        git: 'https://github.com/mybb/mybb',
+        root: '/'
+    }
+
+    #- !Svn {
+        #name: 'InstantCMS'
+        #svn: 'http://svn.instantcms.ru/icms/'
+        #root: '/'
+    #}
+    
+    - !Git {
+        name: 'NodeBB',
+        git: 'https://github.com/NodeBB/NodeBB',
+        root: 'public'
+    }
