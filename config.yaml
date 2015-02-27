@@ -114,29 +114,29 @@ repos:
         root: '/'
     }
 
-    - !Git {
-        name: 'phpBB',
-        git: 'https://github.com/phpbb/phpbb',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'phpBB',
+        #git: 'https://github.com/phpbb/phpbb',
+        #root: '/'
+    #}
 
-    - !Git {
-        name: 'fluxBB',
-        git: 'https://github.com/fluxbb/fluxbb',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'fluxBB',
+        #git: 'https://github.com/fluxbb/fluxbb',
+        #root: '/'
+    #}
 
-    - !Git {
-        name: 'punBB',
-        git: 'https://github.com/punbb/punbb',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'punBB',
+        #git: 'https://github.com/punbb/punbb',
+        #root: '/'
+    #}
 
-    - !Git {
-        name: 'myBB',
-        git: 'https://github.com/mybb/mybb',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'myBB',
+        #git: 'https://github.com/mybb/mybb',
+        #root: '/'
+    #}
 
     #- !Svn {
         #name: 'InstantCMS'
@@ -144,8 +144,8 @@ repos:
         #root: '/'
     #}
     
-    - !Git {
-        name: 'NodeBB',
-        git: 'https://github.com/NodeBB/NodeBB',
-        root: 'public'
-    }
+    #- !Git {
+        #name: 'NodeBB',
+        #git: 'https://github.com/NodeBB/NodeBB',
+        #root: 'public'
+    #}

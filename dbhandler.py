@@ -132,27 +132,25 @@ class Handler( Session ):
 	def query_all( self, *args, **kwargs ):
 		return self._query_next( *args, **kwargs ).all()
 
-	def _tags_via_hash( self, cms, hash ):
+	def _tags_via_hash( self, hash, cms=None ):
 		'''
 		select distinct tag from identifier where cms='{CMS}' and hash='{HASH}';
 		'''
-		query = self.db .query( Identifier.tag ) \
-						.filter( Identifier.cms==cms ) \
-						.filter( Identifier.hash==hash )
-		return query
+		query = self.db .query( Identifier.tag )
+		if cms: query = query.filter( Identifier.cms==cms )
+		return query.filter( Identifier.hash==hash )
 	
 	@ret(0)
 	def tags_via_hash( self, *args, **kwargs ):
 		return self._tags_via_hash( *args, **kwargs ).all()
 
-	def _tags_via_url( self, cms, url ):
+	def _tags_via_url( self, url, cms=None ):
 		'''
 		select distinct tag from identifier where cms='{CMS}' and url='{URL}';
 		'''
-		query = self.db .query( Identifier.tag ) \
-						.filter( Identifier.cms==cms ) \
-						.filter( Identifier.url==url )
-		return query
+		query = self.db .query( Identifier.tag )
+		if cms: query = query.filter( Identifier.cms==cms )
+		return query.filter( Identifier.url==url )
 	
 	@ret(0)
 	def tags_via_url( self, *args, **kwargs ):

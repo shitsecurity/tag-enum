@@ -38,7 +38,7 @@ def parse_args():
 	parser.add_argument('--list', action='store_true', dest='list',
 						help='list cms' )
 	parser.add_argument('--cms', metavar='cms', dest='cms', type=str,
-						help='target cms' )
+						help='target cms', default=None )
 	parser.add_argument('--diff', metavar='404_NOT_FOUND', dest='diff',
 						type=str, help='custom 404 path' )
 	parser.add_argument('--ratio', metavar='0.95', dest='ratio',
@@ -47,8 +47,15 @@ def parse_args():
 						help='request summary' )
 	args = parser.parse_args()
 
-	if args.identify and ( args.target is None or args.cms is None ):
+	if args.identify and args.target is None:
 		parser.error('select cms')
+
+	if( not args.setup
+		and not args.update
+		and not args.parse
+		and not args.identify
+		and not args.list ):
+		parser.error('select action')
 
 	return args
 
@@ -113,8 +120,11 @@ def identify( config, target, cms, ratio=0.95, diff404=None, summary=False ):
 	not_found_data = not_found.content
 	not_found_ratio = lambda _: diff.Diff( not_found_data, _ ).ratio()
 
+	response_tags = None
+	offset = 0
+
 	while True:
-		id = dbh.query_next(cms=cms,tags=tags)
+		id = dbh.query_next( cms=cms, tags=tags, offset=offset )
 		logging.debug( 'requesting {}'.format( id.url ))
 
 		response = sess.get(base_url+id.url)
@@ -124,14 +134,17 @@ def identify( config, target, cms, ratio=0.95, diff404=None, summary=False ):
 		url = response.url
 		file = id.url
 
-		logging.debug('response: {} {:.66}'.format(code,data.replace('\n','')\
-															.replace('\t','')))
+		whitespace =  string.whitespace.replace(' ','')
+		printable = lambda data: ''.join([ _ for _ in data
+										if _ not in whitespace ])
+		logging.debug('response: {} {}'.format(code,printable(data)[:66]))
+
 		if code in [500,502,503]:
 			logging.critical('server down')
 			break
-		elif code in [403,404] or ( code==not_found_code
-									and not_found_ratio(data)>=ratio ):
-			logging.warning('{} failed to access {}'.format( code, url ))
+		elif code==404 or ( code==not_found_code
+							and not_found_ratio(data)>=ratio ):
+			logging.warning('{} not found {}'.format( code, url ))
 			response_tags = dbh.tags_via_url( cms=cms, url=file )
 			tags = list(set(tags).difference(response_tags))
 		elif code==200:
@@ -139,9 +152,14 @@ def identify( config, target, cms, ratio=0.95, diff404=None, summary=False ):
 			logging.debug('{} {}'.format( url, response_hash ))
 			response_tags = dbh.tags_via_hash( cms=cms, hash=response_hash )
 			tags = list(set(tags).intersection(response_tags))
+		elif code==403:
+			logging.warning('{} access denied {}'.format( code, url ))
+			offset += 1
 		else:
 			logging.critical('unrecognized http status code {}'.format(code))
 			break
+
+		if code!=403: offset = 0
 
 		if prev_response_tags==response_tags:
 			logging.info('duplicates detected')
