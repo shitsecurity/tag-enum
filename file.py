@@ -15,7 +15,7 @@ class Finder( object ):
 
 	def find( self, repo ):
 		compute_path = lambda _: os.path.realpath( os.path.join( *_ ))
-		repo_path = compute_path([ self.path, '.{}'.format(repo.root), repo.dir ])
+		repo_path = compute_path([ self.path, repo.dir, repo.root.strip('/') ])
 		for (path, dirs, files) in os.walk( repo_path ):
 			for file in files:
 				if self.match( file ):

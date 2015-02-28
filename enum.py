@@ -54,6 +54,7 @@ def parse_args():
 		and not args.update
 		and not args.parse
 		and not args.identify
+		and not args.delete
 		and not args.list ):
 		parser.error('select action')
 
@@ -115,7 +116,7 @@ def identify( config, target, cms, ratio=0.95, diff404=None, summary=False ):
 
 	rand_str = lambda: ''.join([random.choice(string.letters) for _ in
 								xrange(random.randrange(8,17)) ])
-	not_found = sess.get( base_url + '/' + (diff404 or rand_str()) )
+	not_found = sess.get(base_url + '/' + (diff404 or rand_str()), verify=False)
 	not_found_code = not_found.status_code
 	not_found_data = not_found.content
 	not_found_ratio = lambda _: diff.Diff( not_found_data, _ ).ratio()
