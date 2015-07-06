@@ -1,3 +1,10 @@
+db:
+    driver: 'mysql+pymysql'
+    database: 'enum_cms'
+    username: 'root'
+    password: 'root'
+    host: 'localhost'
+
 extensions:
     - !Extension { extension: 'xml' }
     - !Extension { extension: 'txt' }
@@ -54,23 +61,23 @@ repos:
         root: '/'
     }
 
-    - !Git {
-        name: 'ModX-Evolution',
-        git: 'https://github.com/modxcms/evolution',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'ModX-Evolution',
+        #git: 'https://github.com/modxcms/evolution',
+        #root: '/'
+    #}
 
-    - !Git {
-        name: 'ModX-Revolution',
-        git: 'https://github.com/modxcms/revolution',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'ModX-Revolution',
+        #git: 'https://github.com/modxcms/revolution',
+        #root: '/'
+    #}
 
-    - !Git {
-        name: 'OpenCart',
-        git: 'https://github.com/opencart/opencart',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'OpenCart',
+        #git: 'https://github.com/opencart/opencart',
+        #root: '/'
+    #}
 
     - !Git {
         name: 'Joomla',
@@ -78,35 +85,35 @@ repos:
         root: '/'
     }
 
-    - !Git {
-        name: 'TextPattern',
-        git: 'https://github.com/textpattern/textpattern',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'TextPattern',
+        #git: 'https://github.com/textpattern/textpattern',
+        #root: '/'
+    #}
 
-    - !Git {
-        name: 'MediaWiki',
-        git: 'https://github.com/wikimedia/mediawiki',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'MediaWiki',
+        #git: 'https://github.com/wikimedia/mediawiki',
+        #root: '/'
+    #}
 
-    - !Git {
-        name: 'Moodle',
-        git: 'https://github.com/moodle/moodle',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'Moodle',
+        #git: 'https://github.com/moodle/moodle',
+        #root: '/'
+    #}
     
-    - !Git {
-        name: 'DokuWiki',
-        git: 'https://github.com/splitbrain/dokuwiki',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'DokuWiki',
+        #git: 'https://github.com/splitbrain/dokuwiki',
+        #root: '/'
+    #}
 
-    - !Git {
-        name: 'Typo3',
-        git: 'https://github.com/TYPO3/TYPO3.CMS',
-        root: '/'
-    }
+    #- !Git {
+        #name: 'Typo3',
+        #git: 'https://github.com/TYPO3/TYPO3.CMS',
+        #root: '/'
+    #}
 
     - !Git {
         name: 'Magento',
@@ -114,11 +121,11 @@ repos:
         root: '/'
     }
 
-    - !Git {
-        name: 'phpBB',
-        git: 'https://github.com/phpbb/phpbb',
-        root: 'phpBB'
-    }
+    #- !Git {
+        #name: 'phpBB',
+        #git: 'https://github.com/phpbb/phpbb',
+        #root: 'phpBB'
+    #}
 
     #- !Git {
         #name: 'fluxBB',
@@ -148,4 +155,10 @@ repos:
         #name: 'NodeBB',
         #git: 'https://github.com/NodeBB/NodeBB',
         #root: 'public'
+    #}
+
+    #- !Git {
+        #name: 'PhpMyAdmin',
+        #git: 'https://github.com/phpmyadmin/phpmyadmin',
+        #root: '/'
     #}
